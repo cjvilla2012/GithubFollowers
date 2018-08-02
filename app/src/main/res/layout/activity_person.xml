@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View"/>
+
+        <variable
+            name="viewModel"
+            type="com.cjvilla.yml.model.GithubPerson"/>
+
+    </data>
+
+    <android.support.design.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="true">
+
+        <android.support.design.widget.AppBarLayout
+            android:id="@+id/app_bar_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+            android:fitsSystemWindows="true">
+
+            <android.support.design.widget.CollapsingToolbarLayout
+                android:id="@+id/collapsingToolbar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_scrollFlags="scroll|exitUntilCollapsed"
+                app:expandedTitleMarginStart="48dp"
+                app:expandedTitleMarginEnd="64dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="?android:attr/actionBarSize"
+                    >
+                    <android.support.v7.widget.CardView
+                        android:layout_width="120dp"
+                        android:layout_height="120dp"
+                        android:fitsSystemWindows="true"
+                        android:transitionName="@string/transition"
+                        android:elevation="12dp"
+                        android:id="@+id/imageCircle"
+                        android:layout_centerHorizontal="true"
+                        app:cardCornerRadius="60dp"
+                        android:layout_gravity="center_horizontal"
+                        android:innerRadius="0dp"
+                        android:shape="ring"
+                        android:thicknessRatio="1.9">
+
+                        <ImageView
+                            android:id="@+id/image"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:scaleType="centerCrop"
+                            tools:src="@drawable/person"
+                            app:layout_collapseMode="parallax"/>
+                    </android.support.v7.widget.CardView>
+
+                    <android.support.v7.widget.AppCompatTextView
+                        android:id="@+id/login"
+                        tools:text="person"
+                        android:text="@{viewModel.login}"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_horizontal"
+                        android:layout_below="@+id/imageCircle"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Headline"
+                        />
+
+                    <android.support.v7.widget.AppCompatTextView
+                        android:id="@+id/name"
+                        tools:text="A Person"
+                        android:text='@{viewModel.name}'
+                        android:visibility="@{viewModel.name!=null ? View.VISIBLE : View.GONE}"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_horizontal"
+                        android:layout_below="@+id/login"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                        />
+
+                    <LinearLayout
+                        android:id="@+id/personValues"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_below="@+id/name"
+                        android:layout_marginTop="20dp"
+                        android:weightSum="3">
+
+                        <android.support.v7.widget.AppCompatTextView
+                            android:id="@+id/followers"
+                            tools:text="12"
+                            android:text="@{Integer.toString(viewModel.followers)}"
+                            android:layout_weight="1"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_horizontal"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Headline"
+                            />
+
+                        <android.support.v7.widget.AppCompatTextView
+                            android:id="@+id/following"
+                            tools:text="12"
+                            android:text="@{Integer.toString(viewModel.following)}"
+                            android:layout_weight="1"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_horizontal"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Headline"
+                            />
+
+                        <android.support.v7.widget.AppCompatTextView
+                            android:id="@+id/repositories"
+                            tools:text="12"
+                            android:text="@{Integer.toString(viewModel.repositories)}"
+                            android:layout_weight="1"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_horizontal"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Headline"
+                            />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_below="@+id/personValues"
+                        android:layout_marginBottom="20dp"
+                        android:weightSum="3">
+
+                        <android.support.v7.widget.AppCompatTextView
+                            android:id="@+id/followersLabel"
+                            android:text="@string/followers"
+                            android:layout_weight="1"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_horizontal"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                            />
+
+                        <android.support.v7.widget.AppCompatTextView
+                            android:id="@+id/followingLabel"
+                            android:text="@string/following"
+                            android:layout_weight="1"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_horizontal"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                            />
+
+                        <android.support.v7.widget.AppCompatTextView
+                            android:id="@+id/repositoriesLabel"
+                            android:text="@string/repositories"
+                            android:layout_weight="1"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_horizontal"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                            />
+                    </LinearLayout>
+                </RelativeLayout>
+
+                <android.support.v7.widget.Toolbar
+                    android:id="@+id/toolbar"
+                    android:layout_width="match_parent"
+                    android:layout_height="?android:attr/actionBarSize"
+                    app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+                    app:layout_collapseMode="pin"/>
+
+            </android.support.design.widget.CollapsingToolbarLayout>
+
+        </android.support.design.widget.AppBarLayout>
+
+        <android.support.v4.widget.NestedScrollView
+            android:id="@+id/scroll"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clipToPadding="false"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/location"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    tools:text="Where I am"
+                    android:visibility="@{viewModel.location!=null ? View.VISIBLE : View.GONE}"
+                    android:text='@{viewModel.location}'
+                    android:textColor="@color/black"
+                    android:drawableLeft="@drawable/outline_location_on_black_24"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body1"/>
+
+                <TextView
+                    android:id="@+id/email"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    tools:text="Who I am"
+                    android:visibility="@{viewModel.email!=null ? View.VISIBLE : View.GONE}"
+                    android:text='@{viewModel.email}'
+                    android:textColor="@color/black"
+                    android:drawableLeft="@drawable/outline_email_black_24"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body1"/>
+
+            </LinearLayout>
+        </android.support.v4.widget.NestedScrollView>
+    </android.support.design.widget.CoordinatorLayout>
+</layout>

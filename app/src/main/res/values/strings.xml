@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">YML</string>
+    <string name="followers">Followers</string>
+    <string name="following">Following</string>
+    <string name="repositories">Repositories</string>
+    <string name="search">Search</string>
+    <string name="fmt_home">Home: %s</string>
+    <string name="search_hint">Enter a Github username</string>
+    <string name="ok">OK</string>
+    <string name="cancel">Cancel</string>
+    <string name="transition">transition</string>
+</resources>
