@@ -6,3 +6,5 @@ The second screen is a Material Design presentation of the selected follower det
 The requirements for this app were that no third-party libraries be used. Therefore, the network retrieval was implemented without Retrofit or RxJava, which normally would be used.
 
 Android Data Binding and Material Design are the two main Android-specific highlights of the app. The screen animation from first to second uses an Activity animation, which is the reason for 2 Activities instead of an Activity and 2 Fragments.
+
+An installable APK is included in the root folder. The app was tested in an Android emulator, and a 6.0 device.
